@@ -12,6 +12,9 @@
 // this is libusb, see http://libusb.sourceforge.net/ 
 #include <usb.h>
 
+// for opencv
+#include <cv.h>
+
 // same as in main.c
 #define USB_LED_OFF 0
 #define USB_LED_ON  1
