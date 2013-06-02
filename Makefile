@@ -9,15 +9,16 @@
 
 CC              = gcc
 LIBUSB_CONFIG   = libusb-config
-
+OPENCV_LIBS	= pkg-config --libs opencv
+OPENCV_COMPILE	= pkg-config --cflags opencv
 # Make sure that libusb-config is in the search path or specify a full path.
 # On Windows, there is no libusb-config and you must configure the options
 # below manually. See examples.
-CFLAGS          = `$(LIBUSB_CONFIG) --cflags` `pkg-config --cflags opencv` -O -Wall
+CFLAGS          = `$(LIBUSB_CONFIG) --cflags` `$(OPENCV_COMPILE)` -O -Wall
 #CFLAGS          = -I/usr/local/libusb/include
 # On Windows replace `$(LIBUSB_CONFIG) --cflags` with appropriate "-I..."
 # option to ensure that usb.h is found
-LIBS            = `$(LIBUSB_CONFIG) --libs` `pkg-config --libs opencv` -lm
+LIBS            = `$(LIBUSB_CONFIG) --libs` `$(OPENCV_LIBS)` -lm
 #LIBS            = `$(LIBUSB_CONFIG) --libs` -framework CoreFoundation
 # You may need "-framework CoreFoundation" on Mac OS X and Darwin.
 #LIBS            = -L/usr/local/libusb/lib/gcc -lusb
